@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+MODE='`dialog  --no-mouse --no-cancel --ok-label "Boot into $(lsb_release -i -s)" --title "Welcome to $(lsb_release -d -s)!" --menu "Please select a mode to boot the OS.\nTip: Use up/down to select mode, enter to boot." 20 90 70 "normal" "Boot into $(lsb_release -i -s) without any special mode." "shell" "Boot into $(lsb_release -i -s) with a root shell." "goodbye" "Turn the PC off and exit the boot menu."`'
+clear
+if ( "$MODE" == "normal" ); then
+  exit 0
+elif ( "$MODE" == "shell" ); then
+  bash
+  exit 0
+elif ( "$MODE == "goodbye" ); then
+  shutdown
+fi
